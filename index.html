@@ -24,7 +24,6 @@
       <p>Indulge your senses with the beauty and fragrance of our fresh flower shop. From classic roses to exotic blooms, we offer a wide variety of fresh flowers that are perfect for any occasion.</p>
     </div>
     <div class="banner-img">
-      <!-- Placeholder box instead of image -->
       <div class="image-placeholder">🌼</div>
     </div>
   </section>
@@ -35,11 +34,11 @@
     <p>From classic roses to exotic blooms, we offer a wide variety of fresh plants.</p>
     
     <div class="plant-grid">
-      <!-- Initial static cards (can be empty; JS will update) -->
+      <!-- Cards will be dynamically loaded -->
     </div>
   </section>
 
-  <!-- Optional footer -->
+  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Flower Market. All rights reserved.</p>
   </footer>
@@ -54,7 +53,7 @@
       card.className = 'plant-card';
       card.dataset.productId = flower.id;
       card.innerHTML = `
-        <div class="image-placeholder">🌼</div>
+        <img src="${flower.image_url}" alt="${flower.name}" class="plant-image" />
         <h3>${flower.name}</h3>
         <p>$${parseFloat(flower.price).toFixed(2)}</p>
         <button class="add-to-cart">Add to Cart</button>
@@ -62,7 +61,7 @@
       return card;
     }
 
-    // Function to fetch flowers and update UI
+    // Fetch flowers from backend
     function fetchFlowers(query = '') {
       fetch(`http://localhost:5000/api/flowers?query=${encodeURIComponent(query)}`)
         .then(res => res.json())
@@ -82,10 +81,10 @@
         });
     }
 
-    // Initial fetch - load all flowers
+    // Initial load
     fetchFlowers();
 
-    // Search input event listener
+    // Search input event
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.trim();
       fetchFlowers(query);
@@ -93,4 +92,4 @@
   </script>
 
 </body>
-</html>
+</html
